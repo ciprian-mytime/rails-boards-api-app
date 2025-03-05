@@ -24,14 +24,18 @@ class StoriesController < ApplicationController
     end
 
     def filter
-        if params.has_key?(:status) && params.has_key?(:due_date) then
-            stories = @column.stories.where(status: params[:status], due_date: params[:due_date])
-        elsif params.has_key?(:status) then
-            stories = @column.stories.where(status: params[:status])
-        elsif params.has_key?(:due_date) then
-            stories = @column.stories.where(due_date: params[:due_date])
+        statuses = params[:status]&.split(',') || []
+        due_dates = params[:due_date]&.split(',') || []
+
+        if !statuses.empty? && !due_dates.empty? then
+            stories = @column.stories.where(status: statuses, due_date: due_dates)
+        elsif !statuses.empty? then
+            stories = @column.stories.where(status: statuses)
+        elsif !due_dates.empty? then
+            stories = @column.stories.where(due_date: due_dates)
         else stories = @column.stories
         end
+
         render json: stories
     end
 
