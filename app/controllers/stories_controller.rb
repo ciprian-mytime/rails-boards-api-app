@@ -22,7 +22,19 @@ class StoriesController < ApplicationController
         @story.destroy
         head :no_content
     end
-    
+
+    def filter
+        if params.has_key?(:status) && params.has_key?(:due_date) then
+            stories = @column.stories.where(status: params[:status], due_date: params[:due_date])
+        elsif params.has_key?(:status) then
+            stories = @column.stories.where(status: params[:status])
+        elsif params.has_key?(:due_date) then
+            stories = @column.stories.where(due_date: params[:due_date])
+        else stories = @column.stories
+        end
+        render json: stories
+    end
+
     private
     def set_board
         @board = Board.find(params[:board_id])
