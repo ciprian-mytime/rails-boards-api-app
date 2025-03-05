@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_05_125435) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_05_134809) do
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -33,6 +33,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_125435) do
     t.bigint "column_id", null: false
     t.integer "order"
     t.string "description"
+    t.string "status"
+    t.datetime "due_date"
     t.index ["column_id"], name: "index_stories_on_column_id"
   end
 

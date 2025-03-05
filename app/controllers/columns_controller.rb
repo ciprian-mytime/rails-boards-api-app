@@ -6,21 +6,17 @@ class ColumnsController < ApplicationController
         columns = @board.columns
         render json: columns
     end
-
     def show
         render json: @column
     end
-
     def create
         column = @board.columns.create(column_params)
         render json: column, status: :created
     end
-
     def update
         @column.update!(column_params)
         render json: @column
     end
-
     def destroy
         @column.destroy
         head :no_content
@@ -30,11 +26,9 @@ class ColumnsController < ApplicationController
     def set_board
         @board = Board.find(params[:board_id])
     end
-
     def set_column
         @column = @board.columns.find(params[:id])
     end
-
     def column_params
         params.permit(:title, :order)
     end

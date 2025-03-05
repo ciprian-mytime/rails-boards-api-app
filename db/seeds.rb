@@ -19,6 +19,8 @@ columns.each do |column|
     column.stories.create!(
       title: "Story #{i + 1} in #{column.title}",
       description: "This is a description for Story #{i + 1}",
+      status: "Pending",
+      due_date: "20-Aug-2029",
       order: i + 1
     )
   end
