@@ -50,6 +50,10 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Using bullet to fix N+1
+  # https://github.com/flyerhzm/bullet
+  gem 'bullet'
 end
 
 
