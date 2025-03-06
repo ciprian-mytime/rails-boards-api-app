@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :boards do
+    collection do
+      get ':id/filter_stories', action: 'filter_stories', as: 'filter_stories'
+    end
     resources :columns do
       resources :stories do
         collection do

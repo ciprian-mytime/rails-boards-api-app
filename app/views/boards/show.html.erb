@@ -14,6 +14,23 @@
 </div>
 
 <div>
+  <strong>Filter stories by: (multiple choices separated by comma)</strong>
+  <%= form_with url: filter_stories_boards_path(@board), method: :get, local: true do |form| %>
+    <div>
+      <%= form.label :status %>
+      <%= form.text_field :status %>
+    </div>
+    <div>
+      <%= form.label :due_date %>
+      <%= form.text_field :due_date %>
+    </div>
+    <div>
+      <%= form.submit "Search" %>
+    </div>
+  <% end %>
+</div>
+
+<div>
   <ul>
     <% @board.columns.sort_by{|c| c[:order]}.each do |column| %>
       <li>

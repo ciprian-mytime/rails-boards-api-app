@@ -1,5 +1,5 @@
 class BoardsController < ActionController::Base
-    before_action :set_board, only: [:show, :edit, :update, :destroy]
+    before_action :set_board, only: [:show, :edit, :update, :destroy, :filter_stories]
     
     def index
         @boards = Board.all
@@ -33,6 +33,24 @@ class BoardsController < ActionController::Base
     def destroy
         @board.destroy
         redirect_to boards_path, notice: "Board destroyed successfully", status: :see_other
+    end
+
+    def filter_stories
+        statuses = params[:status]&.split(',') || []
+        due_dates = params[:due_date]&.split(',') || []
+
+        stories = @board.stories
+
+        if !statuses.empty? && !due_dates.empty? then
+            stories = stories.where(status: statuses, due_date: due_dates)
+        elsif !statuses.empty? then
+            stories = stories.where(status: statuses)
+        elsif !due_dates.empty? then
+            stories = stories.where(due_date: due_dates)
+        else stories = stories
+        end
+
+        render json: stories
     end
 
     private
