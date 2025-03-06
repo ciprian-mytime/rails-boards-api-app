@@ -21,17 +21,13 @@
       <th>Description</th>
       <th>Status</th>
       <th>Due Date</th>
-      <th>Actions</th>
     </tr>
     <% @column.stories.sort_by{|s| s[:order]}.each do |story| %>
       <tr>
-        <td><%= story.title %></td>
+        <td><%= link_to story.title, edit_board_column_story_path(@column.board, @column, story) %></td>
         <td><%= story.description %></td>
         <td><%= story.status %></td>
         <td><%= story.due_date %></td>
-        <td>
-          <%= link_to "edit", edit_board_column_story_path(@column.board, @column, story) %>
-        </td>
       </tr>
     <% end %>
   </table>

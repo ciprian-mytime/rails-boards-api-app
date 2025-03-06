@@ -10,7 +10,7 @@ class StoriesController < ActionController::Base
         @story = @column.stories.new(story_params)
 
         if @story.save
-            redirect_to @board, notice: "Story created sucessfully"
+            redirect_to board_column_path(@board, @column), notice: "Story created sucessfully"
         else
             render :new, status: :unprocessable_entity
         end
@@ -20,7 +20,7 @@ class StoriesController < ActionController::Base
     end
     def update
         if @story.update(story_params)
-            redirect_to @board, notice: "Story updated successfully", status: :see_other
+            redirect_to board_column_path(@board, @column), notice: "Story updated successfully", status: :see_other
         else
             render :edit, status: :unprocessable_entity
         end
@@ -28,7 +28,7 @@ class StoriesController < ActionController::Base
 
     def destroy
         @story.destroy
-        redirect_to board_path(@board), notice: "Story destroyed successfully", status: :see_other
+        redirect_to board_column_path(@board, @column), notice: "Story destroyed successfully", status: :see_other
     end
 
     # def filter
