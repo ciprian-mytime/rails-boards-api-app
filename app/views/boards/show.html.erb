@@ -12,3 +12,18 @@
 
   <%= button_to "Destroy this board", @board, method: :delete %>
 </div>
+
+<div>
+  <ul>
+    <% @board.columns.sort_by{|c| c[:order]}.each do |column| %>
+      <li>
+        <strong><%= column.title %></strong>
+        <ul>
+          <% column.stories.sort_by{|s| s[:order]}.each do |story| %>
+            <li><%= story.title %></li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+  </ul>
+</div>

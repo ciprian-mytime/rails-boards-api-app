@@ -37,7 +37,7 @@ class BoardsController < ActionController::Base
 
     private
     def set_board
-        @board = Board.find(params[:id])
+        @board = Board.includes(columns: :stories).find(params[:id])
       end
 
     def board_params

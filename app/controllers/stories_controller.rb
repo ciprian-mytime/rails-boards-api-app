@@ -3,41 +3,41 @@ class StoriesController < ActionController::Base
     before_action :set_column
     before_action :set_story, only: [:show, :update, :destroy]
 
-    def index
-        stories = @column.stories
-        # render json: stories
-    end
-    def show
-        # render json: @story
-    end
-    def create
-        story = @column.stories.create(story_params)
-        # render json: story, status: :created
-    end
-    def update
-        @story.update!(story_params)
-        # render json: @story
-    end
-    def destroy
-        @story.destroy
-        head :no_content
-    end
+    # def index
+    #     stories = @column.stories
+    #     render json: stories
+    # end
+    # def show
+    #     render json: @story
+    # end
+    # def create
+    #     story = @column.stories.create(story_params)
+    #     render json: story, status: :created
+    # end
+    # def update
+    #     @story.update!(story_params)
+    #     render json: @story
+    # end
+    # def destroy
+    #     @story.destroy
+    #     head :no_content
+    # end
 
-    def filter
-        statuses = params[:status]&.split(',') || []
-        due_dates = params[:due_date]&.split(',') || []
+    # def filter
+    #     statuses = params[:status]&.split(',') || []
+    #     due_dates = params[:due_date]&.split(',') || []
 
-        if !statuses.empty? && !due_dates.empty? then
-            stories = @column.stories.where(status: statuses, due_date: due_dates)
-        elsif !statuses.empty? then
-            stories = @column.stories.where(status: statuses)
-        elsif !due_dates.empty? then
-            stories = @column.stories.where(due_date: due_dates)
-        else stories = @column.stories
-        end
+    #     if !statuses.empty? && !due_dates.empty? then
+    #         stories = @column.stories.where(status: statuses, due_date: due_dates)
+    #     elsif !statuses.empty? then
+    #         stories = @column.stories.where(status: statuses)
+    #     elsif !due_dates.empty? then
+    #         stories = @column.stories.where(due_date: due_dates)
+    #     else stories = @column.stories
+    #     end
 
-        # render json: stories
-    end
+    #     render json: stories
+    # end
 
     private
     def set_board
