@@ -1,7 +1,7 @@
 class StoriesController < ActionController::Base
     before_action :set_board
     before_action :set_column
-    before_action :set_story, only: [:edit, :update]
+    before_action :set_story, only: [:edit, :update, :destroy]
 
     def new
         @story = @column.stories.new
@@ -24,6 +24,11 @@ class StoriesController < ActionController::Base
         else
             render :edit, status: :unprocessable_entity
         end
+    end
+
+    def destroy
+        @story.destroy
+        redirect_to board_path(@board), notice: "Story destroyed successfully", status: :see_other
     end
 
     # def filter

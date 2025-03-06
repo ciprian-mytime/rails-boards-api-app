@@ -7,5 +7,6 @@
 <br>
 
 <div>
+  <%= button_to "Delete story", board_column_story_path(@story.column.board, @story.column, @story), method: :delete %>
   <%= link_to "Back to board", board_path(@story.column.board) %>
 </div>
