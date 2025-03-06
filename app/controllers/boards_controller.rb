@@ -2,7 +2,12 @@ class BoardsController < ActionController::Base
     before_action :set_board, only: [:show, :edit, :update, :destroy, :filter_stories]
     
     def index
-        @boards = Board.all
+        if params[:showall] == "true"
+            @boards = Board.includes(columns: :stories).all
+            render json: @boards, include: { columns: { include: :stories } }
+        else
+            @boards = Board.all
+        end
     end
     def show
     end
