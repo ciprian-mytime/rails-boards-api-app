@@ -31,16 +31,16 @@ class BoardsController < ActionController::Base
     end
 
     def destroy
-        @board.destroy!
-        redirect_to board_path, notice: "Board destroyed successfully", status: :see_other
+        @board.destroy
+        redirect_to boards_path, notice: "Board destroyed successfully", status: :see_other
     end
 
     private
     def set_board
-        @board = Board.find(params.expect(:id))
+        @board = Board.find(params[:id])
       end
 
     def board_params
-        params.permit(:title)
+        params.require(:board).permit(:title)
     end
 end
