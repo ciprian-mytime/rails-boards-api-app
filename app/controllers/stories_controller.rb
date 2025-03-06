@@ -5,18 +5,18 @@ class StoriesController < ActionController::Base
 
     def index
         stories = @column.stories
-        render json: stories
+        # render json: stories
     end
     def show
-        render json: @story
+        # render json: @story
     end
     def create
         story = @column.stories.create(story_params)
-        render json: story, status: :created
+        # render json: story, status: :created
     end
     def update
         @story.update!(story_params)
-        render json: @story
+        # render json: @story
     end
     def destroy
         @story.destroy
@@ -36,7 +36,7 @@ class StoriesController < ActionController::Base
         else stories = @column.stories
         end
 
-        render json: stories
+        # render json: stories
     end
 
     private

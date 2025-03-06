@@ -4,18 +4,18 @@ class ColumnsController < ActionController::Base
 
     def index
         columns = @board.columns
-        render json: columns
+        # render json: columns
     end
     def show
-        render json: @column
+        # render json: @column
     end
     def create
         column = @board.columns.create(column_params)
-        render json: column, status: :created
+        # render json: column, status: :created
     end
     def update
         @column.update!(column_params)
-        render json: @column
+        # render json: @column
     end
     def destroy
         @column.destroy
