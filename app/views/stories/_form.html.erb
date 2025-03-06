@@ -1,0 +1,38 @@
+<%= form_with model: [@story.column.board, @story.column, @story], local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :order %>
+    <%= form.text_field :order %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :status %>
+    <%= form.text_field :status %>
+  </div>
+  <div>
+    <%= form.label :due_date %>
+    <%= form.text_field :due_date %>
+  </div>
+
+  <% if story.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+
+      <ul>
+        <% story.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

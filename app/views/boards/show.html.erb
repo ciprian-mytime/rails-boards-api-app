@@ -20,8 +20,9 @@
         <strong><%= link_to column.title, edit_board_column_path(@board, column) %></strong>
         <ul>
           <% column.stories.sort_by{|s| s[:order]}.each do |story| %>
-            <li><%= story.title %></li>
+            <li><%= link_to story.title, edit_board_column_story_path(@board, column, story) %></li>
           <% end %>
+          <%= link_to "New task", new_board_column_story_path(@board, column) %>
         </ul>
       </li>
     <% end %>

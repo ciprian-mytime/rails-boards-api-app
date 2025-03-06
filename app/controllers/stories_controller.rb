@@ -1,27 +1,30 @@
 class StoriesController < ActionController::Base
     before_action :set_board
     before_action :set_column
-    before_action :set_story, only: [:show, :update, :destroy]
+    before_action :set_story, only: [:edit, :update]
 
-    # def index
-    #     stories = @column.stories
-    #     render json: stories
-    # end
-    # def show
-    #     render json: @story
-    # end
-    # def create
-    #     story = @column.stories.create(story_params)
-    #     render json: story, status: :created
-    # end
-    # def update
-    #     @story.update!(story_params)
-    #     render json: @story
-    # end
-    # def destroy
-    #     @story.destroy
-    #     head :no_content
-    # end
+    def new
+        @story = @column.stories.new
+      end
+    def create
+        @story = @column.stories.new(story_params)
+
+        if @story.save
+            redirect_to @board, notice: "Story created sucessfully"
+        else
+            render :new, status: :unprocessable_entity
+        end
+    end
+
+    def edit
+    end
+    def update
+        if @story.update(story_params)
+            redirect_to @board, notice: "Story updated successfully", status: :see_other
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
 
     # def filter
     #     statuses = params[:status]&.split(',') || []
@@ -50,6 +53,6 @@ class StoriesController < ActionController::Base
         @story = @column.stories.find(params[:id])
     end
     def story_params
-        params.permit(:title, :description, :order, :status, :due_date)
+        params.require(:story).permit(:title, :description, :order, :status, :due_date)
     end
 end
