@@ -1,0 +1,26 @@
+<%= form_with model: [@column.board, @column], local: true do |form| %>
+  <div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :order %>
+    <%= form.text_field :order %>
+  </div>
+
+  <% if column.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(column.errors.count, "error") %> prohibited this column from being saved:</h2>
+
+      <ul>
+        <% column.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

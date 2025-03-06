@@ -17,7 +17,7 @@
   <ul>
     <% @board.columns.sort_by{|c| c[:order]}.each do |column| %>
       <li>
-        <strong><%= column.title %></strong>
+        <strong><%= link_to column.title, edit_board_column_path(@board, column) %></strong>
         <ul>
           <% column.stories.sort_by{|s| s[:order]}.each do |story| %>
             <li><%= story.title %></li>

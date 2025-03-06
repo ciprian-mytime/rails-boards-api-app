@@ -1,26 +1,16 @@
 class ColumnsController < ActionController::Base
     before_action :set_board
-    before_action :set_column, only: [:show, :update, :destroy]
+    before_action :set_column
 
-    # def index
-    #     columns = @board.columns
-    #     render json: columns
-    # end
-    # def show
-    #     render json: @column
-    # end
-    # def create
-    #     column = @board.columns.create(column_params)
-    #     render json: column, status: :created
-    # end
-    # def update
-    #     @column.update!(column_params)
-    #     render json: @column
-    # end
-    # def destroy
-    #     @column.destroy
-    #     head :no_content
-    # end
+    def edit
+    end
+    def update
+        if @column.update(column_params)
+            redirect_to board_path(@column.board), notice: "column updated successfully", status: :see_other
+        else
+            render :edit, status: :unprocessable_entity
+        end
+    end
 
     private
     def set_board
@@ -30,6 +20,6 @@ class ColumnsController < ActionController::Base
         @column = @board.columns.find(params[:id])
     end
     def column_params
-        params.permit(:title, :order)
+        params.require(:column).permit(:title, :order)
     end
 end

@@ -1,0 +1,11 @@
+<% content_for :title, "Editing column" %>
+
+<h1>Editing column</h1>
+
+<%= render "form", column: @column %>
+
+<br>
+
+<div>
+  <%= link_to "Back to board", board_path(@column.board) %>
+</div>
