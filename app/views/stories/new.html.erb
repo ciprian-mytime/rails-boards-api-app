@@ -7,5 +7,6 @@
 <br>
 
 <div>
+  <%= link_to "Back to column", board_column_path(@story.column.board, @story.column) %>
   <%= link_to "Back to board", board_path(@story.column.board) %>
 </div>

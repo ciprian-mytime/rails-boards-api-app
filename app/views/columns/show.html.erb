@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @column %>
+
+<div>
+  <h1><%= @column.title %></h1>
+</div>
+
+<div>
+  <%= link_to "Edit this column", edit_board_column_path(@column.board, @column) %> |
+  <%= link_to "Back to board", board_path(@column.board) %>
+
+  <%= button_to "Delete column", board_column_path(@column.board, @column), method: :delete %>
+</div>
+
+<div>
+  <strong>Stories</strong>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Due Date</th>
+      <th>Actions</th>
+    </tr>
+    <% @column.stories.sort_by{|s| s[:order]}.each do |story| %>
+      <tr>
+        <td><%= story.title %></td>
+        <td><%= story.description %></td>
+        <td><%= story.status %></td>
+        <td><%= story.due_date %></td>
+        <td>
+          <%= link_to "edit", edit_board_column_story_path(@column.board, @column, story) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+  <%= link_to "New task", new_board_column_story_path(@column.board, @column) %>
+</div>

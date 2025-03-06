@@ -1,6 +1,6 @@
 <% content_for :title, "Editing story" %>
 
-<h1>Story details</h1>
+<h1>View/Manage Story Details</h1>
 
 <%= render "form", story: @story %>
 
@@ -8,5 +8,6 @@
 
 <div>
   <%= button_to "Delete story", board_column_story_path(@story.column.board, @story.column, @story), method: :delete %>
+  <%= link_to "Back to column", board_column_path(@story.column.board, @story.column) %>
   <%= link_to "Back to board", board_path(@story.column.board) %>
 </div>

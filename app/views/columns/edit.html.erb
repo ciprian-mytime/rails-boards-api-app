@@ -1,6 +1,6 @@
 <% content_for :title, "Editing column" %>
 
-<h1>Editing column</h1>
+<h1>Edit column: <%= @column.title %></h1>
 
 <%= render "form", column: @column %>
 
@@ -8,5 +8,6 @@
 
 <div>
   <%= button_to "Delete column", board_column_path(@column.board, @column), method: :delete %>
+  <%= link_to "Back to column", board_column_path(@column.board, @column) %>
   <%= link_to "Back to board", board_path(@column.board) %>
 </div>
