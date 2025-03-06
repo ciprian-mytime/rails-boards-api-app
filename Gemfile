@@ -35,6 +35,10 @@ gem "thruster", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
+# Using act_as_paranoid for soft delete
+# https://github.com/ActsAsParanoid/acts_as_paranoid
+gem "acts_as_paranoid", "~> 0.10.3"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

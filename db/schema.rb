@@ -10,11 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_05_134809) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_06_074002) do
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_boards_on_deleted_at"
   end
 
   create_table "columns", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -23,7 +25,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_134809) do
     t.datetime "updated_at", null: false
     t.bigint "board_id", null: false
     t.integer "order"
+    t.datetime "deleted_at"
     t.index ["board_id"], name: "index_columns_on_board_id"
+    t.index ["deleted_at"], name: "index_columns_on_deleted_at"
   end
 
   create_table "stories", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -35,7 +39,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_05_134809) do
     t.string "description"
     t.string "status"
     t.datetime "due_date"
+    t.datetime "deleted_at"
     t.index ["column_id"], name: "index_stories_on_column_id"
+    t.index ["deleted_at"], name: "index_stories_on_deleted_at"
   end
 
   add_foreign_key "columns", "boards"
