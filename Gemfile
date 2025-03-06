@@ -35,6 +35,8 @@ gem "thruster", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
+gem 'sprockets-rails', :require => 'sprockets/railtie'
+
 # Using act_as_paranoid for soft delete
 # https://github.com/ActsAsParanoid/acts_as_paranoid
 gem "acts_as_paranoid", "~> 0.10.3"

@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class StoriesController < ActionController::Base
     before_action :set_board
     before_action :set_column
     before_action :set_story, only: [:show, :update, :destroy]

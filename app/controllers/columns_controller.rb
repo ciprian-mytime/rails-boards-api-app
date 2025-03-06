@@ -1,4 +1,4 @@
-class ColumnsController < ApplicationController
+class ColumnsController < ActionController::Base
     before_action :set_board
     before_action :set_column, only: [:show, :update, :destroy]
 

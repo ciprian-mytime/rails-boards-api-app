@@ -1,4 +1,4 @@
-class BoardsController < ApplicationController
+class BoardsController < ActionController::Base
     def index
         render json: Board.all
     end
