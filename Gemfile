@@ -52,6 +52,12 @@ gem "devise", "~> 4.9"
 # https://github.com/varvet/pundit
 gem "pundit", "~> 2.5"
 
+# using lograge and/or ougai to have better logging structure
+# https://github.com/roidrage/lograge
+gem "lograge"
+# https://github.com/tilfin/ougai
+gem 'ougai'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
