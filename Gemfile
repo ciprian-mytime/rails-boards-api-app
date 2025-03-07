@@ -62,6 +62,12 @@ gem 'ougai'
 # https://github.com/paper-trail-gem/paper_trail
 gem 'paper_trail'
 
+# using sidekiq for async jobs
+# https://github.com/sidekiq/sidekiq
+gem "sidekiq", "~> 8.0"
+gem "sidekiq-cron"
+gem "sidekiq-scheduler", "~> 4.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

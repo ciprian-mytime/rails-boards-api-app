@@ -1,0 +1,5 @@
+# :scheduler:
+#   :schedule:
+#     archive_old_stories:
+#       cron: '0 * * * * *'   # Runs once per minute
+#       class: ArchiveOldStoriesJob
