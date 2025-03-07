@@ -24,7 +24,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_102228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "board_id", null: false
-    t.integer "order"
+    t.integer "order", default: 0, null: false
     t.datetime "deleted_at"
     t.index ["board_id"], name: "index_columns_on_board_id"
     t.index ["deleted_at"], name: "index_columns_on_deleted_at"
@@ -35,7 +35,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_102228) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "column_id", null: false
-    t.integer "order"
+    t.integer "order", default: 0, null: false
     t.string "description"
     t.string "status"
     t.datetime "due_date"
