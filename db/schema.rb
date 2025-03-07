@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_07_102228) do
+ActiveRecord::Schema[8.0].define(version: 2025_03_07_111439) do
+  create_table "board_permissions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "board_id", null: false
+    t.integer "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_permissions_on_board_id"
+    t.index ["user_id"], name: "index_board_permissions_on_user_id"
+  end
+
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", null: false
@@ -56,6 +66,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_07_102228) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "board_permissions", "boards"
+  add_foreign_key "board_permissions", "users"
   add_foreign_key "columns", "boards"
   add_foreign_key "stories", "columns"
 end

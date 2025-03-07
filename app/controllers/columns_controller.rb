@@ -1,15 +1,20 @@
 class ColumnsController < ActionController::Base
+    include Pundit::Authorization
+    
     before_action :authenticate_user!
     before_action :set_board
     before_action :set_column, only: [:show, :edit, :update, :destroy]
 
     def show
+        authorize @board
     end
 
     def new
+        authorize @board
         @column = @board.columns.new
       end
     def create
+        authorize @board
         @column = @board.columns.new(column_params)
 
         if @column.save
@@ -20,8 +25,10 @@ class ColumnsController < ActionController::Base
     end
     
     def edit
+        authorize @board
     end
     def update
+        authorize @board
         if @column.update(column_params)
             redirect_to board_column_path(@board, @column), notice: "Column updated successfully", status: :see_other
         else
@@ -30,6 +37,7 @@ class ColumnsController < ActionController::Base
     end
 
     def destroy
+        authorize @board
         @column.destroy
         redirect_to board_path(@board), notice: "Column destroyed successfully", status: :see_other
     end

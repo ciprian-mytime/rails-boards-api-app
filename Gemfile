@@ -48,6 +48,10 @@ gem "acts_as_paranoid", "~> 0.10.3"
 # https://github.com/heartcombo/devise
 gem "devise", "~> 4.9"
 
+# Using pundit for minimal autorizations and permissions
+# https://github.com/varvet/pundit
+gem "pundit", "~> 2.5"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
