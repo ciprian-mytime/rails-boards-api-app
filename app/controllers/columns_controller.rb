@@ -38,7 +38,7 @@ class ColumnsController < ActionController::Base
         @board = Board.find(params[:board_id])
     end
     def set_column
-        @column = @board.columns.find(params[:id])
+        @column = Column.find(params[:id])
     end
     def column_params
         params.require(:column).permit(:title, :order)

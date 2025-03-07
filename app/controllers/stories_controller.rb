@@ -20,6 +20,7 @@ class StoriesController < ActionController::Base
     end
     def update
         if @story.update(story_params)
+            @column = @story.column
             redirect_to board_column_path(@board, @column), notice: "Story updated successfully", status: :see_other
         else
             render :edit, status: :unprocessable_entity
@@ -52,12 +53,12 @@ class StoriesController < ActionController::Base
         @board = Board.find(params[:board_id])
     end
     def set_column
-        @column = @board.columns.find(params[:column_id])
+        @column = Column.find(params[:column_id])
     end
     def set_story
-        @story = @column.stories.find(params[:id])
+        @story = Story.includes(column: { board: :columns }).find(params[:id])
     end
     def story_params
-        params.require(:story).permit(:title, :description, :order, :status, :due_date)
+        params.require(:story).permit(:title, :description, :order, :status, :due_date, :column_id)
     end
 end
