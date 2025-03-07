@@ -2,6 +2,7 @@ class StoriesController < ActionController::Base
     include Pundit::Authorization
     
     before_action :authenticate_user!
+    before_action :set_paper_trail_whodunnit
     before_action :set_board
     before_action :set_column
     before_action :set_story, only: [:edit, :update, :destroy]

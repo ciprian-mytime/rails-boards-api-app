@@ -2,6 +2,7 @@ class BoardsController < ActionController::Base
     include Pundit::Authorization
 
     before_action :authenticate_user!
+    before_action :set_paper_trail_whodunnit
     before_action :set_board, only: [:show, :edit, :update, :destroy, :filter_stories]
     
     def index
