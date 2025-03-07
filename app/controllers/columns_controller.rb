@@ -1,4 +1,5 @@
 class ColumnsController < ActionController::Base
+    before_action :authenticate_user!
     before_action :set_board
     before_action :set_column, only: [:show, :edit, :update, :destroy]
 

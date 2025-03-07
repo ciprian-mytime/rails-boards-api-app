@@ -41,6 +41,10 @@ gem 'sprockets-rails', :require => 'sprockets/railtie'
 # https://github.com/ActsAsParanoid/acts_as_paranoid
 gem "acts_as_paranoid", "~> 0.10.3"
 
+# Using devise for authentication
+# https://github.com/heartcombo/devise
+gem "devise", "~> 4.9"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"

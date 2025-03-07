@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :boards do
     collection do
       get ':id/filter_stories', action: 'filter_stories', as: 'filter_stories'
@@ -18,5 +19,5 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "boards#index"
 end
