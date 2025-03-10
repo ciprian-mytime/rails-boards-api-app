@@ -7,4 +7,6 @@ class Board < ApplicationRecord
 
     has_many :columns, dependent: :destroy
     has_many :stories, through: :columns
+
+    validates :title, presence: true
 end
