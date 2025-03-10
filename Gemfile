@@ -72,6 +72,10 @@ gem "sidekiq-scheduler", "~> 4.0"
 # https://github.com/thoughtbot/factory_bot
 gem "factory_bot", "~> 6.5"
 
+# adding rswag for api docs
+# https://github.com/rswag/rswag
+gem 'rswag'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
