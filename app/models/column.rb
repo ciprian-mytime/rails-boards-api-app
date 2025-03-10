@@ -8,4 +8,11 @@ class Column < ApplicationRecord
     validates :title, presence: true
     validates :order, presence: true
     validates :board_id, presence: true
+
+    def move_up
+        self.order = self.order - 1
+    end
+    def move_down
+        self.order = self.order + 1
+    end
 end

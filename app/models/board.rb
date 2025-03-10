@@ -9,4 +9,12 @@ class Board < ApplicationRecord
     has_many :stories, through: :columns
 
     validates :title, presence: true
+
+    def count_stories
+        self.stories.count
+    end
+
+    def dummy_print_column(column)
+        column || "DUMMY CALL"
+    end
 end

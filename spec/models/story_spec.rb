@@ -18,4 +18,22 @@ RSpec.describe Story, type: :model do
     story.order = nil
     expect(story).not_to be_valid
   end
+
+  describe "#move_up" do
+    it "moves the story up(left) by reducing order by 1 [TESTED WITH FAKE]" do
+      story = FactoryBot.build(:story, order: 5)
+      
+      story.move_up
+      expect(story.order).to eq(4)
+    end
+  end
+
+  describe "#move_down" do
+    it "moves the story down(right) by increasing order by 1 [TESTED WITH FAKE]" do
+      story = FactoryBot.build(:story, order: 5)
+
+      story.move_down
+      expect(story.order).to eq(6)
+    end
+  end
 end
