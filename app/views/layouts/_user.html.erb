@@ -1,7 +1,7 @@
 <div>
     <h3>----------User actions START----------</h3>
     
-    <p>Current user: <%= current_user.email %></p>
+    <p>Current user: <%= current_user&.email || "NOT AUTHENTICATED/EMAIL NOT SPECIFIED" %></p>
     <%= link_to "Sign out", destroy_user_session_path %>
     
     <h3>----------User actions END----------</h3>

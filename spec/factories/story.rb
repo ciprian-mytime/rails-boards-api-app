@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :story do
+    id {1}
     association :column
     title {'Factory Story Title'}
     column_id {1}

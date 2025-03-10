@@ -68,11 +68,6 @@ gem "sidekiq", "~> 8.0"
 gem "sidekiq-cron"
 gem "sidekiq-scheduler", "~> 4.0"
 
-# adding factory bot for model generation in tests
-# https://github.com/thoughtbot/factory_bot
-# gem "factory_bot", "~> 6.5"
-gem "factory_bot_rails"
-
 # adding rswag for api docs
 # https://github.com/rswag/rswag
 gem 'rswag'
@@ -90,6 +85,13 @@ group :development, :test do
   # Rspec Ruby testing [https://github.com/rspec/rspec-rails]
   gem 'rspec-rails', '~> 7.0.0'
   gem "rails-controller-testing"
+
+  # adding factory bot for model generation in tests
+  # https://github.com/thoughtbot/factory_bot
+  # gem "factory_bot", "~> 6.5"
+  gem "factory_bot_rails"
+  # https://github.com/thoughtbot/shoulda-matchers
+  gem 'shoulda-matchers', '~> 6.0'
 end
 
 group :development do
