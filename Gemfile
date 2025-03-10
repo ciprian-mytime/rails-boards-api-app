@@ -68,6 +68,10 @@ gem "sidekiq", "~> 8.0"
 gem "sidekiq-cron"
 gem "sidekiq-scheduler", "~> 4.0"
 
+# adding factory bot for model generation in tests
+# https://github.com/thoughtbot/factory_bot
+gem "factory_bot", "~> 6.5"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
@@ -77,6 +81,9 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Rspec Ruby testing [https://github.com/rspec/rspec-rails]
+  gem 'rspec-rails', '~> 7.0.0'
 end
 
 group :development do
