@@ -23,10 +23,11 @@ class BoardsController < ActionController::Base
       end
     def create
         # authorize Board
-        @board = Board.new(board_params)
+        creator = BoardCreator.new
+        creator.call(params: board_params)
 
-        if @board.save
-            redirect_to @board, notice: "Board created sucessfully"
+        if creator.successful?
+            redirect_to creator.board, notice: "Board created sucessfully"
         else
             render :new, status: :unprocessable_entity
         end
@@ -37,8 +38,11 @@ class BoardsController < ActionController::Base
     end
     def update
         # authorize @board
-        if @board.update(board_params)
-            redirect_to @board, notice: "Board updated successfully", status: :see_other
+        updater = BoardUpdater.new
+        updater.call(board: @board, params: board_params)
+
+        if updater.successful?
+            redirect_to updater.board, notice: "Board updated successfully", status: :see_other
         else
             render :edit, status: :unprocessable_entity
         end
@@ -46,7 +50,10 @@ class BoardsController < ActionController::Base
 
     def destroy
         # authorize @board
-        @board.destroy
+        destroyer = BoardDestroyer.new
+        destroyer.call(board: @board)
+
+        status = destroyer.successful? ? :ok : :unprocessable_entity
         redirect_to boards_path, notice: "Board destroyed successfully", status: :see_other
     end
 
