@@ -13,9 +13,10 @@ class StoriesController < ActionController::Base
       end
     def create
         # authorize @board
-        @story = @column.stories.new(story_params)
+        creator = Stories::StoryCreator.new
+        creator.call(column: @column, params: story_params)
 
-        if @story.save
+        if creator.successful?
             redirect_to board_column_path(@board, @column), notice: "Story created sucessfully"
         else
             render :new, status: :unprocessable_entity
@@ -27,7 +28,10 @@ class StoriesController < ActionController::Base
     end
     def update
         # authorize @board
-        if @story.update(story_params)
+        updater = Stories::StoryUpdater.new
+        updater.call(story: @story, params: story_params)
+
+        if updater.successful?
             @column = @story.column
             redirect_to board_column_path(@board, @column), notice: "Story updated successfully", status: :see_other
         else
@@ -37,7 +41,10 @@ class StoriesController < ActionController::Base
 
     def destroy
         # authorize @board
-        @story.destroy
+        destroyer = Stories::StoryDestroyer.new
+        destroyer.call(story: @story)
+
+        status = destroyer.successful? ? :ok : :unprocessable_entity
         redirect_to board_column_path(@board, @column), notice: "Story destroyed successfully", status: :see_other
     end
 
