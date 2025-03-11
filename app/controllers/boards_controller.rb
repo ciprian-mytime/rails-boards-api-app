@@ -14,15 +14,15 @@ class BoardsController < ActionController::Base
         end
     end
     def show
-        authorize @board
+        # authorize @board
     end
 
     def new
-        authorize Board
+        # authorize Board
         @board = Board.new
       end
     def create
-        authorize Board
+        # authorize Board
         @board = Board.new(board_params)
 
         if @board.save
@@ -33,10 +33,10 @@ class BoardsController < ActionController::Base
     end
 
     def edit
-        authorize @board
+        # authorize @board
     end
     def update
-        authorize @board
+        # authorize @board
         if @board.update(board_params)
             redirect_to @board, notice: "Board updated successfully", status: :see_other
         else
@@ -45,7 +45,7 @@ class BoardsController < ActionController::Base
     end
 
     def destroy
-        authorize @board
+        # authorize @board
         @board.destroy
         redirect_to boards_path, notice: "Board destroyed successfully", status: :see_other
     end

@@ -8,11 +8,11 @@ class StoriesController < ActionController::Base
     before_action :set_story, only: [:edit, :update, :destroy]
 
     def new
-        authorize @board
+        # authorize @board
         @story = @column.stories.new
       end
     def create
-        authorize @board
+        # authorize @board
         @story = @column.stories.new(story_params)
 
         if @story.save
@@ -23,10 +23,10 @@ class StoriesController < ActionController::Base
     end
 
     def edit
-        authorize @board
+        # authorize @board
     end
     def update
-        authorize @board
+        # authorize @board
         if @story.update(story_params)
             @column = @story.column
             redirect_to board_column_path(@board, @column), notice: "Story updated successfully", status: :see_other
@@ -36,7 +36,7 @@ class StoriesController < ActionController::Base
     end
 
     def destroy
-        authorize @board
+        # authorize @board
         @story.destroy
         redirect_to board_column_path(@board, @column), notice: "Story destroyed successfully", status: :see_other
     end
