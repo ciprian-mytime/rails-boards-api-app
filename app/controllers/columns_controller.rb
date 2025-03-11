@@ -16,10 +16,11 @@ class ColumnsController < ActionController::Base
       end
     def create
         # authorize @board
-        @column = @board.columns.new(column_params)
+        creator = Columns::ColumnCreator.new
+        creator.call(board: @board, params: column_params)
 
-        if @column.save
-            redirect_to board_column_path(@board, @column), notice: "Column created sucessfully"
+        if creator.successful?
+            redirect_to board_column_path(@board, creator.column), notice: "Column created sucessfully"
         else
             render :new, status: :unprocessable_entity
         end
@@ -30,8 +31,11 @@ class ColumnsController < ActionController::Base
     end
     def update
         # authorize @board
-        if @column.update(column_params)
-            redirect_to board_column_path(@board, @column), notice: "Column updated successfully", status: :see_other
+        updater = Columns::ColumnUpdater.new
+        updater.call(column: @column, params: column_params)
+
+        if updater.successful?
+            redirect_to board_column_path(@board, updater.column), notice: "Column updated successfully", status: :see_other
         else
             render :edit, status: :unprocessable_entity
         end
@@ -39,7 +43,10 @@ class ColumnsController < ActionController::Base
 
     def destroy
         # authorize @board
-        @column.destroy
+        destroyer = Columns::ColumnDestroyer.new
+        destroyer.call(column: @column)
+
+        status = destroyer.successful? ? :ok : :unprocessable_entity
         redirect_to board_path(@board), notice: "Column destroyed successfully", status: :see_other
     end
 

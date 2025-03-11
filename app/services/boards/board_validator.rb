@@ -7,11 +7,11 @@ module Boards
       @errors = []
 
       if without_title?(@board)
-          @errors << I18n.t('errors.board.title_must_be_present')
+        @errors << I18n.t('errors.board.title_must_be_present')
       end
       
       @errors.each do |error|
-          board.errors.add(:general, error)
+        board.errors.add(:general, error)
       end
 
       self
