@@ -23,7 +23,7 @@ class BoardsController < ActionController::Base
       end
     def create
         # authorize Board
-        creator = BoardCreator.new
+        creator = Boards::BoardCreator.new
         creator.call(params: board_params)
 
         if creator.successful?
@@ -38,7 +38,7 @@ class BoardsController < ActionController::Base
     end
     def update
         # authorize @board
-        updater = BoardUpdater.new
+        updater = Boards::BoardUpdater.new
         updater.call(board: @board, params: board_params)
 
         if updater.successful?
@@ -50,7 +50,7 @@ class BoardsController < ActionController::Base
 
     def destroy
         # authorize @board
-        destroyer = BoardDestroyer.new
+        destroyer = Boards::BoardDestroyer.new
         destroyer.call(board: @board)
 
         status = destroyer.successful? ? :ok : :unprocessable_entity
