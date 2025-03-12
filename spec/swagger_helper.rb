@@ -21,6 +21,49 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
+
+      components: {
+        schemas: {
+          Board: {
+            type: :object, properties: {
+              id: { type: :integer },
+              title: { type: :string },
+              created_at: { type: :string, format: :datetime },
+              updated_at: { type: :string, format: :datetime },
+              deleted_at: { type: :string, format: :datetime, nullable: true }
+            },
+            required: ['id', 'title', 'created_at', 'updated_at']
+          },
+          Column: {
+            type: :object, properties: {
+              id: { type: :integer },
+              title: { type: :string },
+              board_id: { type: :integer },
+              order: { type: :integer, default: 0 },
+              created_at: { type: :string, format: :datetime },
+              updated_at: { type: :string, format: :datetime },
+              deleted_at: { type: :string, format: :datetime, nullable: true }
+            },
+            required: ['id', 'title', 'board_id', 'order', 'created_at', 'updated_at']
+          },
+          Story: {
+            type: :object, properties: {
+              id: { type: :integer },
+              title: { type: :string },
+              column_id: { type: :integer },
+              order: { type: :integer, default: 0 },
+              description: { type: :string, nullable: true },
+              status: { type: :string, nullable: true },
+              due_date: { type: :string, format: :date_time, nullable: true },
+              created_at: { type: :string, format: :datetime },
+              updated_at: { type: :string, format: :datetime },
+              deleted_at: { type: :string, format: :datetime, nullable: true }
+            },
+            required: ['id', 'title', 'column_id', 'order', 'created_at', 'updated_at']
+          }
+        }
+      },
+
       paths: {},
       servers: [
         {
