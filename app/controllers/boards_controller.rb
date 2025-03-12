@@ -8,7 +8,10 @@ class BoardsController < ActionController::Base
     def index
         if params[:showall] == "true"
             @boards = Board.includes(columns: :stories).all
-            render json: @boards, include: { columns: { include: :stories } }
+            render json: @boards.map { |board| BoardPresenter.new(board).as_json({
+                prettify_dates_us: true,
+                board_title_upcase: true,
+            }) }
         else
             @boards = Board.all
         end
