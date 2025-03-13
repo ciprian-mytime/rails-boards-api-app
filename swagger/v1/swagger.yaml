@@ -95,7 +95,81 @@ components:
       - order
       - created_at
       - updated_at
-paths: {}
+paths:
+  "/boards":
+    get:
+      summary: Retrieves all boards
+      tags:
+      - Boards
+      operationId: listBoards
+      description: Fetches all boards with optional filtering
+      parameters:
+      - name: showall
+        in: query
+        description: Show all Boards > Columns > Stories
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Boards retrieved successfully
+    post:
+      summary: Create a new board
+      tags:
+      - Boards
+      operationId: createBoard
+      description: Creates a new board and returns it
+      parameters: []
+      responses:
+        '201':
+          description: Board created successfully
+  "/boards/{id}":
+    get:
+      summary: Retrieves a board
+      tags:
+      - Boards
+      operationId: getBoard
+      description: Fetches a board by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Board retrieved successfully
+    put:
+      summary: Update a board
+      tags:
+      - Boards
+      operationId: updateBoard
+      description: Updates a board by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Board updated successfully
+    delete:
+      summary: Delete a board
+      tags:
+      - Boards
+      operationId: deleteBoard
+      description: Deletes a board by id
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Board deleted successfully
 servers:
 - url: https://{defaultHost}
   variables:
