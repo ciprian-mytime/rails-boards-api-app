@@ -7,15 +7,15 @@ module Columns
       @errors = []
 
       if without_parent_board?(@column)
-        @errors << I18n.t('errors.column.board_must_be_associated')
+        @errors << I18n.t("errors.column.board_must_be_associated")
       end
       if without_title?(@column)
-        @errors << I18n.t('errors.column.title_must_be_present')
+        @errors << I18n.t("errors.column.title_must_be_present")
       end
       if without_order?(@column)
-        @errors << I18n.t('errors.column.order_must_be_present')
+        @errors << I18n.t("errors.column.order_must_be_present")
       end
-      
+
       @errors.each do |error|
         column.errors.add(:general, error)
       end

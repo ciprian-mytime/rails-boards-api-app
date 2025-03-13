@@ -1,20 +1,20 @@
 require "sidekiq/web" # require the web UI
 
 Rails.application.routes.draw do
-  mount Rswag::Ui::Engine => '/api-docs'
-  mount Rswag::Api::Engine => '/api-docs'
+  mount Rswag::Ui::Engine => "/api-docs"
+  mount Rswag::Api::Engine => "/api-docs"
   mount Sidekiq::Web => "/sidekiq" # access it at http://localhost:3000/sidekiq
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   devise_for :users
   resources :boards do
     collection do
-      get ':id/filter_stories', action: 'filter_stories', as: 'filter_stories'
+      get ":id/filter_stories", action: "filter_stories", as: "filter_stories"
     end
     resources :columns do
       resources :stories do
         collection do
-          get 'filter'
+          get "filter"
         end
       end
     end

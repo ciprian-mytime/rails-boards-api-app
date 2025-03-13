@@ -7,7 +7,7 @@ module Columns
     end
 
     def can_destroy?
-      return true
+      true
     end
 
     def call(column:)

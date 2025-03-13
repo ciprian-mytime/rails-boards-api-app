@@ -9,7 +9,7 @@ module Columns
     def call(column:, params:)
       @column = column
       @params = params
-    
+
       update_column
       self
     end

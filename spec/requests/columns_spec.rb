@@ -32,7 +32,6 @@ RSpec.describe 'columns', type: :request do
         run_test!
       end
     end
-
   end
 
   path '/boards/{board_id}/columns/{id}' do
@@ -76,7 +75,7 @@ RSpec.describe 'columns', type: :request do
       description 'Deletes a column by id'
       parameter name: :board_id, in: :path, required: true, type: :integer, description: 'Board id'
       parameter name: :id, in: :path, required: true, type: :integer, description: 'Column id'
-      
+
       response '204', 'Column deleted successfully' do
         run_test!
       end

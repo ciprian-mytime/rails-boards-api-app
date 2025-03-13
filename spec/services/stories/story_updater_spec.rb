@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Stories::StoryUpdater do
   let(:story) { instance_double('Story') }
-  let(:params) {{ title: 'UPDATED Test Story Title' }}
+  let(:params) { { title: 'UPDATED Test Story Title' } }
 
   subject(:updater) { described_class.new }
 

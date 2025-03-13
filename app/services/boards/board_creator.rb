@@ -12,7 +12,7 @@ module Boards
 
     def call(params:)
       @params = params
-      
+
       build_board
       validate
       return self unless @successful

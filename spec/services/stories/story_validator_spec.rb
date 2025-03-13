@@ -27,7 +27,7 @@ RSpec.describe Stories::StoryValidator do
         allow(I18n).to receive(:t).with('errors.story.column_must_be_associated').and_return('Column must be associated')
 
         validator.call(story: story)
-        
+
         expect(validator.errors).to include('Title must be present')
         expect(validator.errors).to include('Order must be present')
         expect(validator.errors).to include('Column must be associated')

@@ -1,13 +1,13 @@
 class ColumnsController < ActionController::Base
     include Pundit::Authorization
-    
+
     before_action :authenticate_user!
     before_action :set_paper_trail_whodunnit
     before_action :set_board
-    before_action :set_column, only: [:show, :edit, :update, :destroy]
+    before_action :set_column, only: [ :show, :edit, :update, :destroy ]
 
     def show
-        # authorize @board
+      # authorize @board
     end
 
     def new
@@ -25,9 +25,9 @@ class ColumnsController < ActionController::Base
             render :new, status: :unprocessable_entity
         end
     end
-    
+
     def edit
-        # authorize @board
+      # authorize @board
     end
     def update
         # authorize @board

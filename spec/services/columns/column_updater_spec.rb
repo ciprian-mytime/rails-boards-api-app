@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Columns::ColumnUpdater do
   let(:column) { instance_double('Column') }
-  let(:params) {{ title: 'UPDATED Test Column Title' }}
+  let(:params) { { title: 'UPDATED Test Column Title' } }
 
   subject(:updater) { described_class.new }
 

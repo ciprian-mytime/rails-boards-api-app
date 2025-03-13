@@ -22,7 +22,7 @@ RSpec.describe Story, type: :model do
   describe "#move_up" do
     it "moves the story up(left) by reducing order by 1 [TESTED WITH FAKE]" do
       story = FactoryBot.build(:story, order: 5)
-      
+
       story.move_up
       expect(story.order).to eq(4)
     end

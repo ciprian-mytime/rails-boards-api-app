@@ -32,7 +32,7 @@ RSpec.configure do |config|
               updated_at: { type: :string, format: :datetime },
               deleted_at: { type: :string, format: :datetime, nullable: true }
             },
-            required: ['id', 'title', 'created_at', 'updated_at']
+            required: [ 'id', 'title', 'created_at', 'updated_at' ]
           },
           Column: {
             type: :object, properties: {
@@ -44,7 +44,7 @@ RSpec.configure do |config|
               updated_at: { type: :string, format: :datetime },
               deleted_at: { type: :string, format: :datetime, nullable: true }
             },
-            required: ['id', 'title', 'board_id', 'order', 'created_at', 'updated_at']
+            required: [ 'id', 'title', 'board_id', 'order', 'created_at', 'updated_at' ]
           },
           Story: {
             type: :object, properties: {
@@ -59,7 +59,7 @@ RSpec.configure do |config|
               updated_at: { type: :string, format: :datetime },
               deleted_at: { type: :string, format: :datetime, nullable: true }
             },
-            required: ['id', 'title', 'column_id', 'order', 'created_at', 'updated_at']
+            required: [ 'id', 'title', 'column_id', 'order', 'created_at', 'updated_at' ]
           }
         }
       },

@@ -9,7 +9,7 @@ module Stories
     def call(story:, params:)
       @story = story
       @params = params
-    
+
       update_story
       self
     end

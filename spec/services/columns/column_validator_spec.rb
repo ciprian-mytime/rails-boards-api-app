@@ -27,7 +27,7 @@ RSpec.describe Columns::ColumnValidator do
         allow(I18n).to receive(:t).with('errors.column.board_must_be_associated').and_return('Board must be associated')
 
         validator.call(column: column)
-        
+
         expect(validator.errors).to include('Title must be present')
         expect(validator.errors).to include('Order must be present')
         expect(validator.errors).to include('Board must be associated')

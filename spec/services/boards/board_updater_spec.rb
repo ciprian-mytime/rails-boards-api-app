@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Boards::BoardUpdater do
   let(:board) { instance_double('Board') }
-  let(:params) {{ title: 'UPDATED Test Board Title' }}
+  let(:params) { { title: 'UPDATED Test Board Title' } }
 
   subject(:updater) { described_class.new }
 

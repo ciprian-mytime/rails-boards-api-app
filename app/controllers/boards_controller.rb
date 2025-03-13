@@ -3,21 +3,21 @@ class BoardsController < ActionController::Base
 
     before_action :authenticate_user!
     before_action :set_paper_trail_whodunnit
-    before_action :set_board, only: [:show, :edit, :update, :destroy, :filter_stories]
-    
+    before_action :set_board, only: [ :show, :edit, :update, :destroy, :filter_stories ]
+
     def index
         if params[:showall] == "true"
             @boards = Board.includes(columns: :stories).all
             render json: @boards.map { |board| BoardPresenter.new(board).as_json({
                 prettify_dates_us: true,
-                board_title_upcase: true,
+                board_title_upcase: true
             }) }
         else
             @boards = Board.all
         end
     end
     def show
-        # authorize @board
+      # authorize @board
     end
 
     def new
@@ -37,7 +37,7 @@ class BoardsController < ActionController::Base
     end
 
     def edit
-        # authorize @board
+      # authorize @board
     end
     def update
         # authorize @board
@@ -61,8 +61,8 @@ class BoardsController < ActionController::Base
     end
 
     def filter_stories
-        statuses = params[:status]&.split(',') || []
-        due_dates = params[:due_date]&.split(',') || []
+        statuses = params[:status]&.split(",") || []
+        due_dates = params[:due_date]&.split(",") || []
 
         stories = @board.stories
 

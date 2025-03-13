@@ -9,12 +9,12 @@ class BoardPresenter
     end
 
     if options.key?(:prettify_dates_us)
-      created_pretty_date = @board.created_at.strftime('%A, %B %d, %Y')
-      updated_pretty_date = @board.updated_at.strftime('%A, %B %d, %Y')
+      created_pretty_date = @board.created_at.strftime("%A, %B %d, %Y")
+      updated_pretty_date = @board.updated_at.strftime("%A, %B %d, %Y")
     end
     if options.key?(:prettify_dates_row)
-      created_pretty_date = @board.created_at.strftime('%Y---%B---%d')
-      updated_pretty_date = @board.updated_at.strftime('%Y---%B---%d')
+      created_pretty_date = @board.created_at.strftime("%Y---%B---%d")
+      updated_pretty_date = @board.updated_at.strftime("%Y---%B---%d")
     end
 
     {

@@ -1,11 +1,11 @@
 class StoriesController < ActionController::Base
     include Pundit::Authorization
-    
+
     before_action :authenticate_user!
     before_action :set_paper_trail_whodunnit
     before_action :set_board
     before_action :set_column
-    before_action :set_story, only: [:edit, :update, :destroy]
+    before_action :set_story, only: [ :edit, :update, :destroy ]
 
     def new
         # authorize @board
@@ -24,7 +24,7 @@ class StoriesController < ActionController::Base
     end
 
     def edit
-        # authorize @board
+      # authorize @board
     end
     def update
         # authorize @board
@@ -49,8 +49,8 @@ class StoriesController < ActionController::Base
     end
 
     def filter
-        statuses = params[:status]&.split(',') || []
-        due_dates = params[:due_date]&.split(',') || []
+        statuses = params[:status]&.split(",") || []
+        due_dates = params[:due_date]&.split(",") || []
 
         if !statuses.empty? && !due_dates.empty? then
             stories = @column.stories.where(status: statuses, due_date: due_dates)

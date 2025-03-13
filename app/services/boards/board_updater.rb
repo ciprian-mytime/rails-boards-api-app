@@ -9,7 +9,7 @@ module Boards
     def call(board:, params:)
       @board = board
       @params = params
-    
+
       update_board
       self
     end

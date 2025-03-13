@@ -7,15 +7,15 @@ module Stories
       @errors = []
 
       if without_parent_column?(@story)
-        @errors << I18n.t('errors.story.column_must_be_associated')
+        @errors << I18n.t("errors.story.column_must_be_associated")
       end
       if without_title?(@story)
-        @errors << I18n.t('errors.story.title_must_be_present')
+        @errors << I18n.t("errors.story.title_must_be_present")
       end
       if without_order?(@story)
-        @errors << I18n.t('errors.story.order_must_be_present')
+        @errors << I18n.t("errors.story.order_must_be_present")
       end
-      
+
       @errors.each do |error|
         story.errors.add(:general, error)
       end

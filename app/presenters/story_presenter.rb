@@ -6,10 +6,10 @@ class StoryPresenter
   def as_json(options = {})
     result = {
       title: @story.title,
-      description: @story.description,
+      description: @story.description
     }
     result[:status] = @story.status unless @story.status == ""
-    
-    return result
+
+    result
   end
 end

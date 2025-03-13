@@ -30,7 +30,6 @@ RSpec.describe 'boards', type: :request do
         run_test!
       end
     end
-
   end
 
   path '/boards/{id}' do
@@ -70,7 +69,7 @@ RSpec.describe 'boards', type: :request do
       operationId 'deleteBoard'
       description 'Deletes a board by id'
       parameter name: :id, in: :path, required: true, type: :integer, description: 'Board id'
-      
+
       response '204', 'Board deleted successfully' do
         run_test!
       end

@@ -21,7 +21,7 @@ RSpec.describe Boards::BoardValidator do
         allow(I18n).to receive(:t).with('errors.board.title_must_be_present').and_return('Title must be present')
 
         validator.call(board: board)
-        
+
         expect(validator.errors).to include('Title must be present')
         expect(board.errors).to have_received(:add).with(:general, 'Title must be present')
       end

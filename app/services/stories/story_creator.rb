@@ -13,7 +13,7 @@ module Stories
     def call(column:, params:)
       @column = column
       @params = params
-      
+
       build_story
       validate
       return self unless @successful

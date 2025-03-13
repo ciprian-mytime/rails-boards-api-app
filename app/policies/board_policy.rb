@@ -28,7 +28,7 @@ class BoardPolicy < ApplicationPolicy
   def destroy?
     has_access?(:edit)
   end
-  
+
   def has_access?(required_role)
     permission = user.board_permissions.find_by(board: record)
     return false unless permission

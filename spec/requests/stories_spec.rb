@@ -37,7 +37,6 @@ RSpec.describe 'stories', type: :request do
         run_test!
       end
     end
-
   end
 
   path '/boards/{board_id}/columns/{column_id}/stories/{id}' do
@@ -87,7 +86,7 @@ RSpec.describe 'stories', type: :request do
       parameter name: :board_id, in: :path, required: true, type: :integer, description: 'Board id'
       parameter name: :column_id, in: :path, required: true, type: :integer, description: 'Column id'
       parameter name: :id, in: :path, required: true, type: :integer, description: 'Story id'
-            
+
       response '204', 'Story deleted successfully' do
         run_test!
       end

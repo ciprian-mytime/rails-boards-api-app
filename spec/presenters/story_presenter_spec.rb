@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe StoryPresenter, type: :presenter do
-  let(:story) { create(:story, 
-    title: "Present Title", 
-    order: 1, 
-    description: "Present Description", 
+  let(:story) { create(:story,
+    title: "Present Title",
+    order: 1,
+    description: "Present Description",
     status: 'test status',
-    created_at: 1.day.ago, 
+    created_at: 1.day.ago,
     updated_at: Time.now
   ) }
   let(:presenter) { StoryPresenter.new(story) }

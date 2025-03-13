@@ -13,7 +13,7 @@ module Columns
     def call(board:, params:)
       @board = board
       @params = params
-      
+
       build_column
       validate
       return self unless @successful

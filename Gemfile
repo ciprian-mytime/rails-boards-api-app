@@ -56,11 +56,11 @@ gem "pundit", "~> 2.5"
 # https://github.com/roidrage/lograge
 gem "lograge"
 # https://github.com/tilfin/ougai
-gem 'ougai'
+gem "ougai"
 
 # using papertrail for db audits
 # https://github.com/paper-trail-gem/paper_trail
-gem 'paper_trail'
+gem "paper_trail"
 
 # using sidekiq for async jobs
 # https://github.com/sidekiq/sidekiq
@@ -70,7 +70,7 @@ gem "sidekiq-scheduler", "~> 4.0"
 
 # adding rswag for api docs
 # https://github.com/rswag/rswag
-gem 'rswag'
+gem "rswag"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -83,7 +83,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Rspec Ruby testing [https://github.com/rspec/rspec-rails]
-  gem 'rspec-rails', '~> 7.0.0'
+  gem "rspec-rails", "~> 7.0.0"
   gem "rails-controller-testing"
 
   # adding factory bot for model generation in tests
@@ -91,7 +91,7 @@ group :development, :test do
   # gem "factory_bot", "~> 6.5"
   gem "factory_bot_rails"
   # https://github.com/thoughtbot/shoulda-matchers
-  gem 'shoulda-matchers', '~> 6.0'
+  gem "shoulda-matchers", "~> 6.0"
 end
 
 group :development do
@@ -100,7 +100,7 @@ group :development do
 
   # Using bullet to fix N+1
   # https://github.com/flyerhzm/bullet
-  gem 'bullet'
+  gem "bullet"
 end
 
 group :test do

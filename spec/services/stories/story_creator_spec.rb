@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Stories::StoryCreator do
   let(:column) { instance_double('Column') }
   let(:story) { instance_double('Story') }
-  let(:params) {{ title: 'Test Story Title' }}
+  let(:params) { { title: 'Test Story Title' } }
 
   subject(:validator) { instance_double(Stories::StoryValidator) }
   subject(:creator) { described_class.new(validator_service: validator) }
@@ -12,12 +12,12 @@ RSpec.describe Stories::StoryCreator do
     allow(Story).to receive(:new).with(params).and_return(story)
     allow(story).to receive(:column=).with(column)
   end
-  
+
   describe '#call' do
     context 'when validation is successful' do
       it 'creates a story and marks successful true' do
         allow(validator).to receive(:call).with(story: story).and_return(double(successful?: true))
-        
+
         expect(story).to receive(:save).and_return(true)
         result = creator.call(column: column, params: params)
         expect(result.successful?).to be true
