@@ -83,7 +83,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Rspec Ruby testing [https://github.com/rspec/rspec-rails]
-  gem "rspec-rails", "~> 7.0.0"
+  gem "rspec-rails", "~> 7.1.1"
   gem "rails-controller-testing"
 
   # adding factory bot for model generation in tests
