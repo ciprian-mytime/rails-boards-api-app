@@ -165,13 +165,244 @@ paths:
       - name: id
         in: path
         required: true
+        description: Board id
         schema:
           type: integer
       responses:
         '204':
           description: Board deleted successfully
+  "/boards/{board_id}/columns":
+    get:
+      summary: Retrieves all columns on a board
+      tags:
+      - Columns
+      operationId: listColumns
+      description: Fetches all columns linked to a board
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Columns retrieved successfully
+    post:
+      summary: Create a new column
+      tags:
+      - Columns
+      operationId: createColumn
+      description: Creates a new column and returns it
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: Column created successfully
+  "/boards/{board_id}/columns/{id}":
+    get:
+      summary: Retrieves a column
+      tags:
+      - Columns
+      operationId: getColumn
+      description: Fetches a column by id
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Column retrieved successfully
+    put:
+      summary: Update a column
+      tags:
+      - Columns
+      operationId: updateColumn
+      description: Updates a column by id
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Column updated successfully
+    delete:
+      summary: Delete a column
+      tags:
+      - Columns
+      operationId: deleteColumn
+      description: Deletes a column by id
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Column deleted successfully
+  "/boards/{board_id}/columns/{column_id}/stories":
+    get:
+      summary: Retrieves all stories on a column
+      tags:
+      - Stories
+      operationId: listStories
+      description: Fetches all stories linked to a column
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: column_id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Stories retrieved successfully
+    post:
+      summary: Create a new story
+      tags:
+      - Stories
+      operationId: createStory
+      description: Creates a new story and returns it
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: column_id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      responses:
+        '201':
+          description: Story created successfully
+  "/boards/{board_id}/columns/{column_id}/stories/{id}":
+    get:
+      summary: Retrieves a story
+      tags:
+      - Stories
+      operationId: getStory
+      description: Fetches a story by id
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: column_id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        description: Story id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Story retrieved successfully
+    put:
+      summary: Update a story
+      tags:
+      - Stories
+      operationId: updateStory
+      description: Updates a story by id
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: column_id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        description: Story id
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Story updated successfully
+    delete:
+      summary: Delete a story
+      tags:
+      - Stories
+      operationId: deleteStory
+      description: Deletes a story by id
+      parameters:
+      - name: board_id
+        in: path
+        required: true
+        description: Board id
+        schema:
+          type: integer
+      - name: column_id
+        in: path
+        required: true
+        description: Column id
+        schema:
+          type: integer
+      - name: id
+        in: path
+        required: true
+        description: Story id
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Story deleted successfully
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: www.example.com
+      default: 127.0.0.1:3000

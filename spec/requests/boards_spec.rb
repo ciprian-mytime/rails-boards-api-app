@@ -69,7 +69,7 @@ RSpec.describe 'boards', type: :request do
       produces 'application/json'
       operationId 'deleteBoard'
       description 'Deletes a board by id'
-      parameter name: :id, in: :path, required: true, type: :integer
+      parameter name: :id, in: :path, required: true, type: :integer, description: 'Board id'
       
       response '204', 'Board deleted successfully' do
         run_test!
