@@ -91,7 +91,7 @@ group :development, :test do
   # gem "factory_bot", "~> 6.5"
   gem "factory_bot_rails"
   # https://github.com/thoughtbot/shoulda-matchers
-  gem "shoulda-matchers", "~> 6.0"
+  gem "shoulda-matchers", "~> 6.5"
 end
 
 group :development do
